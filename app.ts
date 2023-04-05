@@ -1,6 +1,6 @@
 import express, { Application } from "express";
 
-class App {
+export default class App {
   private app: Application;
   private port: number;
 
