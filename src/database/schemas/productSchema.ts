@@ -1,8 +1,13 @@
 import mongoose from 'mongoose';
+import CategoryType from './customTypes/CategoryType';
 
 export const productSchema = new mongoose.Schema({
     name: {
         type: String,
+        required: true,
+    },
+    categories: {
+        type: [CategoryType],
         required: true,
     },
     qty: {
@@ -11,10 +16,6 @@ export const productSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: true,
-    },
-    category: {
-        type: String,
         required: true,
     },
 });
