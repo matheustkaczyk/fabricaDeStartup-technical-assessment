@@ -1,5 +1,5 @@
 import express, { Application } from "express";
-import Database from "./src/database";
+import Database from "./database";
 
 export default class App {
   private app: Application;
