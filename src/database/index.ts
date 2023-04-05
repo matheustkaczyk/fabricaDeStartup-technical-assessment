@@ -4,7 +4,7 @@ export default class Database {
     private uri: string;
 
     constructor() {
-        this.uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+        this.uri = process.env.MONGODB_URI || "mongodb://localhost:27017/eFoodMenu";
     }
 
     public async connect() {
