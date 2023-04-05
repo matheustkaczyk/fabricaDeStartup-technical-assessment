@@ -1,7 +1,11 @@
-import mongoose from 'mongoose';
-import CategoryType from './customTypes/CategoryType';
+import mongoose, { Document } from 'mongoose';
 
-export const productSchema = new mongoose.Schema({
+import CategoryType from './customTypes/CategoryType';
+import IProduct from '../../interfaces/IProduct';
+
+export interface IProductDocument extends IProduct, Document {}
+
+const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -19,3 +23,5 @@ export const productSchema = new mongoose.Schema({
         required: true,
     },
 });
+
+export const Product = mongoose.model<IProductDocument>('Product', productSchema);
