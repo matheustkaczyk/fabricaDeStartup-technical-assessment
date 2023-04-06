@@ -1,5 +1,5 @@
 import { User } from "../database/schemas/userSchema";
-import { CreateUserDto } from "../dto/userDto";
+import { AuthenticateUserDto, CreateUserDto } from "../dto/userDto";
 
 import IUser from "../interfaces/IUser";
 
@@ -31,6 +31,26 @@ export class UserModel {
 
         } else {
             throw new Error("User already exists");
+        }
+    }
+
+    async authenticateUser({ email, password }: AuthenticateUserDto): Promise<IUser | Error> {
+        const userFound = await this.findUser(email) as IUser;
+
+        if (userFound) {
+            if (userFound.password === password) {
+                
+                return {
+                    name: userFound.name,
+                    email: userFound.email,
+                    type: userFound.type,
+                };
+
+            } else {
+                throw new Error("Invalid password");
+            }
+        } else {
+            throw new Error("User not found");
         }
     }
 }
