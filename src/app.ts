@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Router } from "express";
 import dotenv from "dotenv";
 
 import Database from "./database";
@@ -9,6 +9,7 @@ export default class App {
   private app: Application;
   private port: number;
   private db: Database;
+  private router: Router;
   private userController: UserController;
 
   constructor() {
@@ -17,6 +18,7 @@ export default class App {
     this.port = Number(process.env.PORT) || 3000;
     this.db = new Database();
     this.userController = new UserController();
+    this.router = Router();
     this.setupRoutes();
   }
 
@@ -34,7 +36,9 @@ export default class App {
 
   private setupRoutes() {
     // USER ROUTES
-    this.app.post("/auth/signup", this.userController.createUser.bind(this.userController));
-    this.app.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
+    this.router.post("/auth/signup", this.userController.createUser.bind(this.userController));
+    this.router.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
+
+    this.app.use(this.router);
   }
 }

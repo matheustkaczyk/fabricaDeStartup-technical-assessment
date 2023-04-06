@@ -18,8 +18,8 @@ export class UserController {
             await this.userService.createUser({ name, email, password, type });
     
             res.status(201);
-        } catch (error) {
-            res.status(400).json(error);        
+        } catch (error: Error | any) {
+            res.status(400).json({ message: error.message });        
         }
     }
 
@@ -30,7 +30,7 @@ export class UserController {
             const token = await this.userService.authenticateUser({ email, password });
     
             res.status(200).json({ token });
-        } catch (error) {
+        } catch (error: Error | any) {
             res.status(400).json(error);        
         }
     }
