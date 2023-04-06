@@ -4,7 +4,6 @@ import { UserModel } from "../models/userModel";
 import Jwt from "../validations/jwt";
 
 import Md5 from "../utils/md5";
-import IUser from "../interfaces/IUser";
 
 export class UserService {
     private userModel: UserModel
@@ -18,16 +17,12 @@ export class UserService {
     }
 
     public async authenticateUser({ email, password }: AuthenticateUserDto): Promise<string | Error> {
-        const user = await this.userModel.authenticateUser({ email, password });
+        const hashedPassword = this.md5.hash(password);
+
+        const user = await this.userModel.authenticateUser({ email, password: hashedPassword });
 
         if (user instanceof Error) {
             return user;
-        }
-
-        const hashedPassword = this.md5.hash(password);
-
-        if (user.password !== hashedPassword) {
-            throw new Error('Invalid password');
         }
 
         const token = this.jwt.sign({ id: user.id });
