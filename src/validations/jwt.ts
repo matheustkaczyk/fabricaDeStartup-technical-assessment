@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 export default class Jwt {
     private secret: string;
 
-    constructor(secret: string) {
+    constructor(secret?: string) {
         this.secret = secret || process.env.SECRET as string;
     }
 
