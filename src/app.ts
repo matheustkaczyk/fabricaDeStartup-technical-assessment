@@ -1,4 +1,5 @@
 import express, { Application } from "express";
+import dotenv from "dotenv";
 
 import Database from "./database";
 
@@ -28,9 +29,12 @@ export default class App {
 
   private config() {
     this.app.use(express.json());
+    dotenv.config();
   }
 
   private setupRoutes() {
+    // USER ROUTES
     this.app.post("/auth/signup", this.userController.createUser.bind(this.userController));
+    this.app.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
   }
 }
