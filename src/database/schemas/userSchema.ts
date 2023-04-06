@@ -1,7 +1,12 @@
 import mongoose, { Document } from "mongoose";
 import IUser from "../../interfaces/IUser";
 
-export interface IUserDocument extends IUser, Document {}
+export interface IUserDocument extends Document {
+    name: string;
+    email: string;
+    password: string;
+    type: IUser["type"];
+}
 
 const userSchema = new mongoose.Schema({
     name: {
