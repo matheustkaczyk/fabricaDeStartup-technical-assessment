@@ -1,9 +1,10 @@
-import { AuthenticateUserDto } from "../dto/userDto";
+import { AuthenticateUserDto, CreateUserDto } from "../dto/userDto";
 import { UserModel } from "../models/userModel";
 
 import Jwt from "../validations/jwt";
 
 import Md5 from "../utils/md5";
+import IUser from "../interfaces/IUser";
 
 export class UserService {
     private userModel: UserModel
@@ -14,6 +15,14 @@ export class UserService {
         this.userModel = new UserModel();
         this.jwt = new Jwt();
         this.md5 = new Md5();
+    }
+
+    public async createUser({ name, password, email, type }: CreateUserDto): Promise<IUser | Error> {
+        const hashedPassword = this.md5.hash(password);
+
+        const user = await this.userModel.createUser({ name, password: hashedPassword, email, type });
+
+        return user;
     }
 
     public async authenticateUser({ email, password }: AuthenticateUserDto): Promise<string | Error> {
