@@ -14,7 +14,7 @@ export class UserModel {
         }
     }
 
-    async createUser({ name, password, email }: CreateUserDto): Promise<IUser> {
+    async createUser({ name, password, email, type }: CreateUserDto): Promise<IUser> {
         const userExists = await this.findUser(email);
 
         if (!userExists) {
@@ -23,6 +23,7 @@ export class UserModel {
                 name,
                 password,
                 email,
+                type,
             });
 
             await user.save();
@@ -39,7 +40,7 @@ export class UserModel {
 
         if (userFound) {
             if (userFound.password === password) {
-                
+
                 return {
                     name: userFound.name,
                     email: userFound.email,
