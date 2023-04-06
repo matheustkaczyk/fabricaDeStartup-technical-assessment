@@ -4,14 +4,14 @@ import { CreateUserDto } from "../dto/userDto";
 import IUser from "../interfaces/IUser";
 
 export class UserModel {
-    async findUser(email: string): Promise<IUser | null> {
+    async findUser(email: string): Promise<IUser | Error> {
         const userFound = await User.findOne({ email });
 
         if (userFound) {
             return userFound;
+        } else {
+            throw new Error("User not found");
         }
-
-        return null;
     }
 
     async createUser({ name, password, email }: CreateUserDto): Promise<IUser> {
