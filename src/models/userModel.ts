@@ -5,7 +5,7 @@ import IUser from "../interfaces/IUser";
 
 export class UserModel {
     async findUser(email: string): Promise<IUser | Error> {
-        const userFound = await User.findOne({ email });
+        const userFound = await User.findOne({ email }) as IUser | Error;
 
         if (userFound) {
             return userFound;
@@ -14,8 +14,8 @@ export class UserModel {
         }
     }
 
-    async createUser({ name, password, email, type }: CreateUserDto): Promise<IUser> {
-        const userExists = await this.findUser(email);
+    async createUser({ name, password, email, type }: CreateUserDto): Promise<IUser | Error> {
+        const userExists = await this.findUser(email) as IUser | Error;
 
         if (!userExists) {
 
@@ -42,6 +42,7 @@ export class UserModel {
             if (userFound.password === password) {
 
                 return {
+                    id: userFound.id,
                     name: userFound.name,
                     email: userFound.email,
                     type: userFound.type,
