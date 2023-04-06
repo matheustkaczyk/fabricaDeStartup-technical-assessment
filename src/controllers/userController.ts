@@ -15,9 +15,9 @@ export class UserController {
         try {
             const { name, email, password, type }: CreateUserDto = req.body;
             
-            const user = await this.userService.createUser({ name, email, password, type });
+            await this.userService.createUser({ name, email, password, type });
     
-            res.status(201).json(user);
+            res.status(201);
         } catch (error) {
             res.status(400).json(error);        
         }
