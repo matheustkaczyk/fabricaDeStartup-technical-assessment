@@ -1,4 +1,5 @@
 import { Product } from '../database/schemas/productSchema';
+import { CreateProductDto } from '../dto/productDto';
 import IProduct from '../interfaces/IProduct';
 
 export class ProductModel {
@@ -14,5 +15,16 @@ export class ProductModel {
         }
 
         return foundProduct;
+    }
+
+    async createProduct({ name, categories, qty, price }: CreateProductDto): Promise<void> {
+        const newProduct = new Product({
+            name,
+            categories,
+            qty,
+            price
+        });
+
+        await newProduct.save();
     }
 }
