@@ -1,4 +1,4 @@
-import express, { Application, Router } from "express";
+import express, { Application } from "express";
 import dotenv from "dotenv";
 
 import Database from "./database";
