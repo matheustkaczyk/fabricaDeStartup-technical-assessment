@@ -38,4 +38,12 @@ export class ProductModel {
             price: price || foundProduct.price
         });
     }
+
+    async deleteProduct(id: string): Promise<void> {
+        const foundProduct = await Product.findByIdAndDelete(id);
+
+        if (!foundProduct) {
+            throw new Error('Product not found');
+        }
+    }
 }
