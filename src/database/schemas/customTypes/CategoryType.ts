@@ -8,7 +8,7 @@ export default class CategoryType extends SchemaType {
     }
 
     cast(val: ICategory) {
-        if (val && val.name && val.parent && val.products)
+        if (val && val.name && val.parent)
         {
             return val;
         }
