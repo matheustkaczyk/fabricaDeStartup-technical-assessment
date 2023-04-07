@@ -2,7 +2,7 @@ import { Product } from '../database/schemas/productSchema';
 import IProduct from '../interfaces/IProduct';
 
 export class ProductModel {
-    async getProducts() {
+    async getProducts(): Promise<IProduct[]> {
         return await Product.find();
     }
 
