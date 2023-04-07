@@ -4,12 +4,14 @@ import dotenv from "dotenv";
 import Database from "./database";
 
 import { UserController } from "./controllers/userController";
+import { CategoryController } from "./controllers/categoryController";
 
 export default class App {
   private app: Application;
   private port: number;
   private db: Database;
   private userController: UserController;
+  private categoryController: CategoryController;
 
   constructor() {
     this.app = express();
@@ -17,6 +19,7 @@ export default class App {
     this.port = Number(process.env.PORT) || 3000;
     this.db = new Database();
     this.userController = new UserController();
+    this.categoryController = new CategoryController();
     this.setupRoutes();
   }
 
@@ -36,5 +39,8 @@ export default class App {
     // USER ROUTES
     this.app.post("/auth/signup", this.userController.createUser.bind(this.userController));
     this.app.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
+
+    // CATEGORY ROUTES
+    this.app.get("/category", this.categoryController.getCategories.bind(this.categoryController));
   }
 }
