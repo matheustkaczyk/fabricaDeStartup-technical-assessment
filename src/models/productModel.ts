@@ -1,5 +1,5 @@
 import { Product } from '../database/schemas/productSchema';
-import { CreateProductDto } from '../dto/productDto';
+import { CreateProductDto, UpdateProductDto } from '../dto/productDto';
 import IProduct from '../interfaces/IProduct';
 
 export class ProductModel {
@@ -26,5 +26,16 @@ export class ProductModel {
         });
 
         await newProduct.save();
+    }
+
+    async updateProduct(id: string, { name, categories, qty, price }: UpdateProductDto): Promise<void> {
+        const foundProduct = await this.getProductById(id);
+
+        await Product.findOneAndUpdate({ _id: id }, {
+            name: name || foundProduct.name,
+            categories: categories || foundProduct.categories,
+            qty: qty || foundProduct.qty,
+            price: price || foundProduct.price
+        });
     }
 }
