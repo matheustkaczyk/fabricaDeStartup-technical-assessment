@@ -5,7 +5,7 @@ export interface ICategoryDocument extends Document {
     parent: String | null;
 };
 
-const categorySchema = new mongoose.Schema({
+export const categorySchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
