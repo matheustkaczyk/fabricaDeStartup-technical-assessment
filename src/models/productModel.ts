@@ -7,7 +7,7 @@ export class ProductModel {
         return await Product.find();
     }
 
-    async getProductById(id: string): Promise<IProduct> {
+    async getProductById(id: string) {
         const foundProduct = await Product.findById(id);
 
         if (!foundProduct) {
