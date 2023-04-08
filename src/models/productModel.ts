@@ -53,11 +53,11 @@ export class ProductModel {
             if (!foundProduct) {
                 throw new Error('Product not found');
             }
-            } catch (err: Error | any) {
+        } catch (err: Error | any) {
             if (err.name === 'CastError' && err.kind === 'ObjectId') {
                 throw new Error('Invalid product id');
             }
             throw err;
-            }
+        }
     }
 }
