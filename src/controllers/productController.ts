@@ -38,7 +38,7 @@ export class ProductController {
     
             await this.productService.createProduct({ name, categories, qty, price });
     
-            res.status(201).json({ message: 'Product created successfully' });
+            res.status(201);
         } catch (error: Error | any) {
             res.status(404).json({ message: error.message });    
         }
@@ -51,7 +51,19 @@ export class ProductController {
     
             await this.productService.updateProduct(id, { name, categories, qty, price });
     
-            res.status(200).json({ message: 'Product updated successfully' });
+            res.status(200);
+        } catch (error: Error | any) {
+            res.status(404).json({ message: error.message });    
+        }
+    }
+
+    async deleteProduct(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+    
+            await this.productService.deleteProduct(id);
+    
+            res.status(200);
         } catch (error: Error | any) {
             res.status(404).json({ message: error.message });    
         }
