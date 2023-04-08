@@ -8,4 +8,10 @@ export class CategoryModel {
 
         return categories;
     }
+
+    async getCategoryByName(name: string): Promise<ICategory> {
+        const foundCategory = await Category.findOne({ name }) as ICategory;
+
+        return foundCategory;
+    }
 }
