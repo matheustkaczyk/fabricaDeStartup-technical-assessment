@@ -15,7 +15,7 @@ export class ProductService {
         return await this.productModel.getProducts();
     }
 
-    async getProductById(id: string):Promise<IProduct> {
+    async getProductById(id: string) {
         return await this.productModel.getProductById(id);
     }
 
