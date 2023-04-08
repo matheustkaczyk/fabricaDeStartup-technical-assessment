@@ -1,11 +1,10 @@
 import mongoose, { Document } from 'mongoose';
 
-import CategoryType from './customTypes/CategoryType';
-import ICategory from '../../interfaces/ICategory';
+import { ICategoryDocument, categorySchema } from './categorySchema';
 
 export interface IProductDocument extends Document {
     name: string;
-    categories: ICategory[];
+    categories: ICategoryDocument[];
     qty: number;
     price: number;
 }
@@ -16,7 +15,7 @@ const productSchema = new mongoose.Schema({
         required: true,
     },
     categories: {
-        type: [CategoryType],
+        type: [categorySchema],
         required: true,
     },
     qty: {
