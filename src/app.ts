@@ -5,6 +5,7 @@ import Database from "./database";
 
 import { UserController } from "./controllers/userController";
 import { CategoryController } from "./controllers/categoryController";
+import { ProductController } from "./controllers/productController";
 
 export default class App {
   private app: Application;
@@ -12,6 +13,7 @@ export default class App {
   private db: Database;
   private userController: UserController;
   private categoryController: CategoryController;
+  private productController: ProductController
 
   constructor() {
     this.app = express();
@@ -20,6 +22,7 @@ export default class App {
     this.db = new Database();
     this.userController = new UserController();
     this.categoryController = new CategoryController();
+    this.productController = new ProductController();
     this.setupRoutes();
   }
 
@@ -42,5 +45,12 @@ export default class App {
 
     // CATEGORY ROUTES
     this.app.get("/category", this.categoryController.getCategories.bind(this.categoryController));
+
+    // PRODUCT ROUTES
+    this.app.get("/product", this.productController.getProducts.bind(this.productController));
+    this.app.get("/product/:id", this.productController.getProductById.bind(this.productController));
+    this.app.post("/product", this.productController.createProduct.bind(this.productController));
+    this.app.patch("/product/:id", this.productController.updateProduct.bind(this.productController));
+    this.app.delete("/product/:id", this.productController.deleteProduct.bind(this.productController));
   }
 }
