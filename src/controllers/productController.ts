@@ -44,4 +44,16 @@ export class ProductController {
         }
     }
 
+    async updateProduct(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            const { name, categories, qty, price }: IProduct = req.body;
+    
+            await this.productService.updateProduct(id, { name, categories, qty, price });
+    
+            res.status(200).json({ message: 'Product updated successfully' });
+        } catch (error: Error | any) {
+            res.status(404).json({ message: error.message });    
+        }
+    }
 }
