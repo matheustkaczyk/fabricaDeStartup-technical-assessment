@@ -86,11 +86,11 @@ Resposta:
 ```
 [
   {
-		"_id": "Id da categoria",
-		"name": "Nome da categoria",
-		"parent": "Categoria pai ou nulo",
-		"__v": 0
-	},
+	"_id": "Id da categoria",
+	"name": "Nome da categoria",
+	"parent": "Categoria pai ou nulo",
+	"__v": 0
+  },
 ]
 ```
 
@@ -140,3 +140,42 @@ Resposta:
     "price": "preço"
   }
 ```
+
+#### POST /product
+Cria um novo produto
+
+Requisição:
+```
+{
+  "name": "Nome do produto",
+  "categories": [
+    {
+	"name": "Nome da categoria",
+	"parent": "Categoria pai (se houver)"
+    }
+],
+"qty": "quantidade",
+"price": "preço"
+}
+```
+
+#### PATCH /product/:id
+Atualiza as informações de um produto existente com base em seu ID.
+Todos os campos da requisição são opcionais, só será atualizado os campos enviados.
+
+Requisição:
+```
+{
+  "name": "Nome do produto",
+  "qty": quantidade,
+  "categories": [
+    {
+        "name": "nome da categoria",
+        "parent": "nome da categoria pai"
+     }
+  ]
+}
+```
+
+#### DELETE /product/:id
+Remove um produto do sistema com base em seu ID.
