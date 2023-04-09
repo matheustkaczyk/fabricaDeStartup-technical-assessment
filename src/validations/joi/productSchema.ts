@@ -9,7 +9,7 @@ export const productSchema = Joi.object({
         'string.max': 'Name must be at most 30 characters long',
         'any.required': 'Name is a required field',
     }),
-    categories: Joi.array().items(Joi.string()).required().messages({
+    categories: Joi.array().items(Joi.object({ name: Joi.string(), parent: Joi.string().allow(null) })).required().messages({
         'array.base': 'Categories must be an array of strings',
         'array.empty': 'Categories cannot be an empty field',
         'any.required': 'Categories is a required field',
