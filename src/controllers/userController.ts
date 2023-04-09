@@ -17,7 +17,7 @@ export class UserController {
             
             await this.userService.createUser({ name, email, password, type });
     
-            res.status(201);
+            res.status(201).end();
         } catch (error: Error | any) {
             res.status(400).json({ message: error.message });        
         }
