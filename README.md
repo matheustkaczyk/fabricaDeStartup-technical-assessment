@@ -18,6 +18,7 @@ Crie um arquivo .env na raiz do projeto com as seguintes variáveis de ambiente:
 PORT=3000
 MONGO_URI=<sua-url-do-banco-de-dados-mongodb>
 JWT_SECRET=<sua-chave-secreta-para-o-jsonwebtoken>
+CORS_ORIGIN=<url-informando-origem-cors>
 ```
 
 Inicie o servidor:
