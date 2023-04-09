@@ -5,7 +5,7 @@
 Instructions to run the project locally
 Clone the repository to your local machine:
 ```
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+git clone https://github.com/matheustkaczyk/fabricaDeStartup-technical-assessment.git
 ```
 
 Install the project dependencies:
@@ -43,155 +43,155 @@ npm run seed
 - Nodemon - used to automatically restart the server whenever there are changes to the code;
 - Dotenv - a library used to load environment variables from a .env file.
 
-## Rotas da API
-### Autenticação e autorização
+## API Routes
+### Authentication and Authorization
 
 #### POST /auth/signup
-Cria um novo usuário.
+Creates a new user.
 
-Requisição:
+Request:
 ```
 {
-  "email": "usuario@exemplo.com",
-  "password": "senha",
-  "name": "Nome do usuário",
-  "type": "tipo de usuário (admin ou user)"
+  "email": "user@example.com",
+  "password": "password",
+  "name": "User's name",
+  "type": "user type (admin or user)"
 }
 ```
 
 
-Resposta:
+Response:
 
-Status Code 200 ou 404
+Status Code 200 or 404
 
 #### POST /auth/login
-Autentica um usuário.
+Authenticates a user.
 
-Requisição:
+Request:
 ```
 {
-  "email": "usuario@exemplo.com",
-  "password": "senha"
+  "email": "user@example.com",
+  "password": "password"
 }
 ```
 
-Resposta:
+Response:
 ```
 {
-  "token": "token de autenticação"
+  "token": "authentication token"
 }
 ```
 
-### Categorias
+### Categories
 #### GET /category
-Retorna todas as categorias.
+Returns all categories.
 
-#### É necessário token JWT
+#### JWT token required
 
-Resposta:
+Response:
 ```
-[
-  {
-	"_id": "Id da categoria",
-	"name": "Nome da categoria",
-	"parent": "Categoria pai ou nulo",
-	"__v": 0
-  },
+[ 
+	{
+	  "_id": "Category ID",
+	  "name": "Category name",
+	  "parent": "Parent category or null",
+	  "__v": 0 
+	},
 ]
 ```
 
-### Produtos
+### Products
 
 #### GET /product
-Retorna todos os produtos.
+Returns all products.
 
-#### É necessário token JWT
+#### JWT token required
 
-Resposta:
+Response:
 
 ```
 [
-  {
-    "_id": "id do produto",
-    "name": "nome do produto",
-    "categories": [
-      {
-        "_id": "id da categoria",
-        "name": "nome da categoria",
-        "parent": "nome da categoria pai"
-      }
-    ],
-    "qty": "quantidade numérica",
-    "price": "preço"
+	{
+	  "_id": "product id",
+	  "name": "product name",
+	  "categories": [
+	  {
+	    "_id": "category id",
+	    "name": "category name",
+	    "parent": "parent category name"
+	   }
+          ],
+    	  "qty": "numerical quantity",
+    	  "price": "price"
   }
 ]
 ```
 
 #### GET /product/:id
-Retorna um produto por ID nos parâmetros.
+Returns a product based on its ID.
 
-Resposta:
+Response:
 ```
 {
-    "_id": "id do produto",
-    "name": "nome do produto",
+    "_id": "product id",
+    "name": "product name",
     "categories": [
       {
-        "_id": "id da categoria",
-        "name": "nome da categoria",
-        "parent": "nome da categoria pai"
+        "_id": "category id",
+        "name": "category name",
+        "parent": "parent category name"
       }
     ],
-    "qty": "quantidade numérica",
-    "price": "preço"
+    "qty": "numerical quantity",
+    "price": "price"
   }
 ```
 
 #### POST /product
-Cria um novo produto
+Creates a new product
 
-Requisição:
+Request:
 ```
 {
-  "name": "Nome do produto",
+  "name": "product name",
   "categories": [
     {
-	"name": "Nome da categoria",
-	"parent": "Categoria pai (se houver)"
+	"name": "category name",
+	"parent": "parent category name (if any)"
     }
 ],
-"qty": "quantidade",
-"price": "preço"
+"qty": "quantity",
+"price": "price"
 }
 ```
 
 #### PATCH /product/:id
-Atualiza as informações de um produto existente com base em seu ID.
-Todos os campos da requisição são opcionais, só será atualizado os campos enviados.
+Updates the information of an existing product based on its ID.
+All fields in the request are optional, only the fields sent will be updated.
 
-Requisição:
+Request:
 ```
 {
-  "name": "Nome do produto",
-  "qty": quantidade,
+  "name": "product name",
+  "qty": quantity,
   "categories": [
     {
-        "name": "nome da categoria",
-        "parent": "nome da categoria pai"
+        "name": "category name",
+        "parent": "parent category name"
      }
   ]
 }
 ```
 
 #### DELETE /product/:id
-Remove um produto do sistema com base em seu ID.
+Removes a product from the system based on its ID.
 
-## **Sobre o autor**
+## **About the author**
 
-Obrigado por ter lido até aqui!
+Thank you for reading until here!
 
-Eu me chamo Matheus, e sou desenvolvedor web fullstack. Comecei meus estudos no ano de 2020 e estou me apaixonando cada dia que passa, através dos estudos, por tecnologia e desenvolvimento. Esse projeto e esse README foram desenvolvidos como um desafio técnico. Eu empenhei muito carinho na construção de cada linha.
+My name is Matheus and I am a full-stack web developer. I started my studies in 2020 and I am falling more in love with technology and development every day through my studies. This project and this README were developed as a technical challenge. I put a lot of care into building every line.
 
-[Você pode olhar mais dos meus repositórios aqui](https://github.com/matheustkaczyk)
+[You can check out more of my repositories here](https://github.com/matheustkaczyk)
 
-[Ou se conectar comigo no linkedin!](https://www.linkedin.com/in/matheustkaczykribeiro/)
+[Or connect with me on LinkedIn!](https://www.linkedin.com/in/matheustkaczykribeiro/)
