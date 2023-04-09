@@ -24,22 +24,24 @@ export class ProductService {
     }
 
     async createProduct({ name, categories, qty, price }: CreateProductDto): Promise<void> {
-        const categoriesArr: ICategory[] = [];
+        const categoriesExists = await this.categoryModel.categoriesExist(categories);
 
-        for (const category of categories) {
-            const categoryExists = await this.categoryModel.getCategoryByName(category.name);
-    
-            if (categoryExists) {
-                categoriesArr.push(categoryExists);
-            }
+        if (categoriesExists) {
+            categories = categoriesExists;
         }
-
-        categories = categoriesArr;
 
         return await this.productModel.createProduct({ name, categories, qty, price });
     }
 
     async updateProduct(id: string, { name, categories, qty, price }: UpdateProductDto):Promise<void> {
+        if (categories) {
+            const categoriesExists = await this.categoryModel.categoriesExist(categories);
+
+            if (categoriesExists.length > 0) {
+                categories = categoriesExists;
+            }
+        }
+
         return await this.productModel.updateProduct(id, { name, categories, qty, price });
     }
 
