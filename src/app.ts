@@ -10,7 +10,7 @@ import { ProductController } from "./controllers/productController";
 import JwtValidationMiddleware from "./middlewares/jwtValidationMiddleware";
 import JoiValidationMiddleware from "./middlewares/joiValidationMiddleware";
 
-import { productSchema } from "./validations/joi/productSchema";
+import { createProductSchema, updateProductSchema } from "./validations/joi/productSchema";
 import { userSchema, authenticateUserSchema } from "./validations/joi/userSchema";
 
 export default class App {
@@ -53,7 +53,7 @@ export default class App {
   private setupRoutes() {
     // USER ROUTES
     this.app.post("/auth/signup", this.joiMiddleware.validate(userSchema), this.userController.createUser.bind(this.userController));
-    this.app.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
+    this.app.post("/auth/login", this.joiMiddleware.validate(authenticateUserSchema), this.userController.authenticateUser.bind(this.userController));
 
     // CATEGORY ROUTES
     this.app.get("/category", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.categoryController.getCategories.bind(this.categoryController));
@@ -61,8 +61,8 @@ export default class App {
     // PRODUCT ROUTES
     this.app.get("/product", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.getProducts.bind(this.productController));
     this.app.get("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.getProductById.bind(this.productController));
-    this.app.post("/product", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.createProduct.bind(this.productController));
-    this.app.patch("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.updateProduct.bind(this.productController));
+    this.app.post("/product", this.joiMiddleware.validate(createProductSchema), this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.createProduct.bind(this.productController));
+    this.app.patch("/product/:id", this.joiMiddleware.validate(updateProductSchema), this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.updateProduct.bind(this.productController));
     this.app.delete("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.deleteProduct.bind(this.productController));
   }
 }
