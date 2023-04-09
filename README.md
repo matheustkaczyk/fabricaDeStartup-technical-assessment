@@ -27,7 +27,7 @@ Start the server:
 npm start
 ```
 
-Categories are pre-seeded into the server using a seed file. To run the seed:
+Categories are pre-seeded into the database using a seed file. To run the seed:
 ```
 npm run seed
 ```
