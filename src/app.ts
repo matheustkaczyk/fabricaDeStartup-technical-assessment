@@ -47,7 +47,12 @@ export default class App {
   }
 
   private config() {
+    const corsOptions = {
+      origin: process.env.CORS_ORIGIN || "*",
+    }
+
     this.app.use(express.json());
+    this.app.use(cors(corsOptions));
     dotenv.config();
   }
 
