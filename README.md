@@ -87,7 +87,7 @@ Response:
 #### GET /category
 Returns all categories.
 
-#### JWT token required
+#### - JWT token required
 
 Response:
 ```
@@ -106,7 +106,7 @@ Response:
 #### GET /product
 Returns all products.
 
-#### JWT token required
+#### - JWT token required
 
 Response:
 
@@ -131,7 +131,7 @@ Response:
 #### GET /product/:id
 Returns a product based on its ID.
 
-#### JWT token required
+#### - JWT token required
 
 Response:
 ```
@@ -153,7 +153,7 @@ Response:
 #### POST /product
 Creates a new product
 
-#### JWT token required
+#### - JWT token required
 
 Request:
 ```
@@ -174,7 +174,7 @@ Request:
 Updates the information of an existing product based on its ID.
 All fields in the request are optional, only the fields sent will be updated.
 
-#### JWT token required
+#### - JWT token required
 
 Request:
 ```
@@ -193,7 +193,7 @@ Request:
 #### DELETE /product/:id
 Removes a product from the system based on its ID.
 
-#### JWT token required
+#### - JWT token required
 
 ## **About the author**
 
