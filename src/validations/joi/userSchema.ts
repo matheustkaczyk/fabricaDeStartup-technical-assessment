@@ -36,6 +36,18 @@ export const userSchema = Joi.object({
 });
 
 export const authenticateUserSchema = Joi.object({
-    email: Joi.string().email().required().message('Email must be a valid email'),
-    password: Joi.string().min(6).max(30).required().message('Password must be between 6 and 30 characters'),
+    email: Joi.string()
+        .email()
+        .required()
+        .messages({
+            'string.email': 'Email must be a valid email',
+            'string.empty': 'Email is required',
+        }),
+    password: Joi.string()
+        .min(6).max(30)
+        .required()
+        .messages({
+            'string.min': 'Password must have at least 6 characters',
+            'string.max': 'Password must have at most 30 characters'
+        }),
 });
