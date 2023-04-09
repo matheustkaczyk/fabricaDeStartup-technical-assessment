@@ -1,19 +1,19 @@
-# API Cardápio Online
-## Descrição
-##### Essa é uma API construída como parte do desafio técnico para a vaga de desenvolvedor node.js na empresa Fábrica de Startups. A API consiste em um sistema de cardápio online que permite criar e gerenciar produtos e categorias. Além disso, possui autenticação e autorização de usuários.
+# Online Menu API
+## Description
+##### This is an API built as part of the technical challenge for the Node.js developer position at Fábrica de Startups. The API consists of an online menu system that allows for the creation and management of products and categories. Additionally, it has user authentication and authorization.
 
-Instruções para rodar o projeto localmente
-Clone o repositório em sua máquina local:
+Instructions to run the project locally
+Clone the repository to your local machine:
 ```
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 ```
 
-Instale as dependências do projeto:
+Install the project dependencies:
 ```
 npm install
 ```
 
-Crie um arquivo .env na raiz do projeto com as seguintes variáveis de ambiente:
+Create a .env file at the root of the project with the following environment variables:
 ```
 PORT=3000
 MONGO_URI=<sua-url-do-banco-de-dados-mongodb>
@@ -21,27 +21,27 @@ JWT_SECRET=<sua-chave-secreta-para-o-jsonwebtoken>
 CORS_ORIGIN=<url-informando-origem-cors>
 ```
 
-Inicie o servidor:
+Start the server:
 ```
 npm start
 ```
 
-As categorias são pré-inseridas no servidos por meio de um seed, para rodar o seed:
+Categories are pre-seeded into the server using a seed file. To run the seed:
 ```
 npm run seed
 ```
 
 ## Tecnologias/Frameworks/Bibliotecas usadas e a razão da escolha delas
-- Node.js - escolhido por ser uma plataforma de desenvolvimento back-end escalável e com grande comunidade;
-- Express - utilizado como framework para lidar com rotas e requisições HTTP de forma simples e rápida;
-- TypeScript - escolhido para aumentar a segurança do código e torná-lo mais fácil de ser mantido;
-- MongoDB - escolhido como banco de dados para o armazenamento dos dados, por ser uma opção escalável e flexível, além de se integrar bem com o Node.js;
-- Mongoose - utilizado como uma ferramenta de modelagem de objetos do MongoDB para o Node.js;
-- Joi - escolhido para a validação dos dados de entrada, por ser uma biblioteca simples e muito útil para essa tarefa;
-- JsonWebToken - utilizado para a autenticação JWT;
-- Cors - escolhido para habilitar o acesso CORS aos recursos da API;
-- Nodemon - utilizado para reiniciar automaticamente o servidor sempre que houver mudanças no código;
-- Dotenv - biblioteca utilizada para carregar variáveis de ambiente a partir de um arquivo .env.
+- Node.js - chosen for being a scalable back-end development platform with a large community;
+- Express - used as a framework for handling routes and HTTP requests in a simple and fast way;
+- TypeScript - chosen to increase the code's security and make it easier to maintain;
+- MongoDB - chosen as the database for storing data, as it is a scalable and flexible option that integrates well with Node.js;
+- Mongoose - used as a MongoDB object modeling tool for Node.js;
+- Joi - chosen for input data validation, as it is a simple and useful library for this task;
+- JsonWebToken - used for JWT authentication;
+- Cors - chosen to enable CORS access to the API's resources;
+- Nodemon - used to automatically restart the server whenever there are changes to the code;
+- Dotenv - a library used to load environment variables from a .env file.
 
 ## Rotas da API
 ### Autenticação e autorização
