@@ -32,7 +32,7 @@ Categories are pre-seeded into the database using a seed file. To run the seed:
 npm run seed
 ```
 
-## Tecnologias/Frameworks/Bibliotecas usadas e a razão da escolha delas
+## Technologies/Frameworks/Libraries used and the reason for choosing them
 - **Node.js** - chosen for being a scalable back-end development platform with a large community;
 - **Express** - used as a framework for handling routes and HTTP requests in a simple and fast way;
 - **TypeScript** - chosen to increase the code's security and make it easier to maintain;
