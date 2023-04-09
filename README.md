@@ -2,7 +2,7 @@
 ## Description
 ##### This is an API built as part of the technical challenge for the Node.js developer position at Fábrica de Startups. The API consists of an online menu system that allows for the creation and management of products and categories. Additionally, it has user authentication and authorization.
 
-####Instructions to run the project locally
+#### Instructions to run the project locally
 
 Clone the repository to your local machine:
 ```
