@@ -32,16 +32,16 @@ npm run seed
 ```
 
 ## Tecnologias/Frameworks/Bibliotecas usadas e a razão da escolha delas
-- Node.js - chosen for being a scalable back-end development platform with a large community;
-- Express - used as a framework for handling routes and HTTP requests in a simple and fast way;
-- TypeScript - chosen to increase the code's security and make it easier to maintain;
-- MongoDB - chosen as the database for storing data, as it is a scalable and flexible option that integrates well with Node.js;
-- Mongoose - used as a MongoDB object modeling tool for Node.js;
-- Joi - chosen for input data validation, as it is a simple and useful library for this task;
-- JsonWebToken - used for JWT authentication;
-- Cors - chosen to enable CORS access to the API's resources;
-- Nodemon - used to automatically restart the server whenever there are changes to the code;
-- Dotenv - a library used to load environment variables from a .env file.
+- **Node.js** - chosen for being a scalable back-end development platform with a large community;
+- **Express** - used as a framework for handling routes and HTTP requests in a simple and fast way;
+- **TypeScript** - chosen to increase the code's security and make it easier to maintain;
+- **MongoDB** - chosen as the database for storing data, as it is a scalable and flexible option that integrates well with Node.js;
+- **Mongoose** - used as a MongoDB object modeling tool for Node.js;
+- **Joi** - chosen for input data validation, as it is a simple and useful library for this task;
+- **JsonWebToken** - used for JWT authentication;
+- **Cors** - chosen to enable CORS access to the API's resources;
+- **Nodemon** - used to automatically restart the server whenever there are changes to the code;
+- **Dotenv** - a library used to load environment variables from a .env file.
 
 ## API Routes
 ### Authentication and Authorization
@@ -62,7 +62,7 @@ Request:
 
 Response:
 
-Status Code 200 or 404
+**Status Code 200 or 404**
 
 #### POST /auth/login
 Authenticates a user.
