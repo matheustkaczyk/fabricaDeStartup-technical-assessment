@@ -9,9 +9,13 @@ export class CategoryModel {
         return categories;
     }
 
-    async getCategoryByName(name: string): Promise<ICategory> {
-        const foundCategory = await Category.findOne({ name }) as ICategory;
+    async getCategoryByName(name: string): Promise<ICategory | null> {
+        const foundCategory = await Category.findOne({ name });
 
-        return foundCategory;
+        if (foundCategory) {
+            return foundCategory.toObject() as ICategory;
+          }
+        
+          return null;
     }
 }
