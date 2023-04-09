@@ -1,14 +1,18 @@
 import { CreateProductDto, UpdateProductDto } from "../dto/productDto";
 
 import { ProductModel } from "../models/productModel";
+import { CategoryModel } from "../models/categoryModel";
 
 import IProduct from "../interfaces/IProduct";
+import ICategory from "../interfaces/ICategory";
 
 export class ProductService {
     private productModel: ProductModel;
+    private categoryModel: CategoryModel;
 
     constructor() {
         this.productModel = new ProductModel();
+        this.categoryModel = new CategoryModel();
     }
 
     async getProducts():Promise<IProduct[]> {
@@ -20,6 +24,18 @@ export class ProductService {
     }
 
     async createProduct({ name, categories, qty, price }: CreateProductDto): Promise<void> {
+        const categoriesArr: ICategory[] = [];
+
+        for (const category of categories) {
+            const categoryExists = await this.categoryModel.getCategoryByName(category.name);
+    
+            if (categoryExists) {
+                categoriesArr.push(categoryExists);
+            }
+        }
+
+        categories = categoriesArr;
+
         return await this.productModel.createProduct({ name, categories, qty, price });
     }
 
