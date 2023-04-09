@@ -39,3 +39,104 @@ npm start
 
 ## Rotas da API
 ### Autenticação e autorização
+
+#### POST /auth/signup
+Cria um novo usuário.
+
+Requisição:
+```
+{
+  "email": "usuario@exemplo.com",
+  "password": "senha",
+  "name": "Nome do usuário",
+  "type": "tipo de usuário (admin ou user)"
+}
+```
+
+
+Resposta:
+
+Status Code 200 ou 404
+
+#### POST /auth/login
+Autentica um usuário.
+
+Requisição:
+```
+{
+  "email": "usuario@exemplo.com",
+  "password": "senha"
+}
+```
+
+Resposta:
+```
+{
+  "token": "token de autenticação"
+}
+```
+
+### Categorias
+#### GET /category
+Retorna todas as categorias.
+
+#### É necessário token JWT
+
+Resposta:
+```
+[
+  {
+		"_id": "Id da categoria",
+		"name": "Nome da categoria",
+		"parent": "Categoria pai ou nulo",
+		"__v": 0
+	},
+]
+```
+
+### Produtos
+
+#### GET /product
+Retorna todos os produtos.
+
+#### É necessário token JWT
+
+Resposta:
+
+```
+[
+  {
+    "_id": "id do produto",
+    "name": "nome do produto",
+    "categories": [
+      {
+        "_id": "id da categoria",
+        "name": "nome da categoria",
+        "parent": "nome da categoria pai"
+      }
+    ],
+    "qty": "quantidade numérica",
+    "price": "preço"
+  }
+]
+```
+
+#### GET /product/:id
+Retorna um produto por ID nos parâmetros.
+
+Resposta:
+```
+{
+    "_id": "id do produto",
+    "name": "nome do produto",
+    "categories": [
+      {
+        "_id": "id da categoria",
+        "name": "nome da categoria",
+        "parent": "nome da categoria pai"
+      }
+    ],
+    "qty": "quantidade numérica",
+    "price": "preço"
+  }
+```
