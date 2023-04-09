@@ -26,6 +26,11 @@ Inicie o servidor:
 npm start
 ```
 
+As categorias são pré-inseridas no servidos por meio de um seed, para rodar o seed:
+```
+npm run seed
+```
+
 ## Tecnologias/Frameworks/Bibliotecas usadas e a razão da escolha delas
 - Node.js - escolhido por ser uma plataforma de desenvolvimento back-end escalável e com grande comunidade;
 - Express - utilizado como framework para lidar com rotas e requisições HTTP de forma simples e rápida;
@@ -180,3 +185,13 @@ Requisição:
 
 #### DELETE /product/:id
 Remove um produto do sistema com base em seu ID.
+
+## **Sobre o autor**
+
+Obrigado por ter lido até aqui!
+
+Eu me chamo Matheus, e sou desenvolvedor web fullstack. Comecei meus estudos no ano de 2020 e estou me apaixonando cada dia que passa, através dos estudos, por tecnologia e desenvolvimento. Esse projeto e esse README foram desenvolvidos como um desafio técnico. Eu empenhei muito carinho na construção de cada linha.
+
+[Você pode olhar mais dos meus repositórios aqui](https://github.com/matheustkaczyk)
+
+[Ou se conectar comigo no linkedin!](https://www.linkedin.com/in/matheustkaczykribeiro/)
