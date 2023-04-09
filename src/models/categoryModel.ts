@@ -18,4 +18,20 @@ export class CategoryModel {
         
           return null;
     }
+
+    async categoriesExist(categories: ICategory[]): Promise<ICategory[]> {
+        const categoriesArr: ICategory[] = [];
+
+        for (const category of categories) {
+            const categoryExists = await this.getCategoryByName(category.name);
+    
+            if (categoryExists) {
+                categoriesArr.push(categoryExists);
+            }
+        }
+
+        categories = categoriesArr;
+
+        return categories;
+    }
 }
