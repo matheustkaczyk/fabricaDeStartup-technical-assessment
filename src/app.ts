@@ -67,8 +67,8 @@ export default class App {
     // PRODUCT ROUTES
     this.app.get("/product", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.getProducts.bind(this.productController));
     this.app.get("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.getProductById.bind(this.productController));
-    this.app.post("/product", this.joiMiddleware.validate(createProductSchema), this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.createProduct.bind(this.productController));
-    this.app.patch("/product/:id", this.joiMiddleware.validate(updateProductSchema), this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.updateProduct.bind(this.productController));
+    this.app.post("/product", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.joiMiddleware.validate(createProductSchema), this.productController.createProduct.bind(this.productController));
+    this.app.patch("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.joiMiddleware.validate(updateProductSchema), this.productController.updateProduct.bind(this.productController));
     this.app.delete("/product/:id", this.jwtMiddleware.validateJwt.bind(this.jwtMiddleware), this.productController.deleteProduct.bind(this.productController));
   }
 }
