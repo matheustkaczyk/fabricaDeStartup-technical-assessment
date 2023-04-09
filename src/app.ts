@@ -6,7 +6,12 @@ import Database from "./database";
 import { UserController } from "./controllers/userController";
 import { CategoryController } from "./controllers/categoryController";
 import { ProductController } from "./controllers/productController";
+
 import JwtValidationMiddleware from "./middlewares/jwtValidationMiddleware";
+import JoiValidationMiddleware from "./middlewares/joiValidationMiddleware";
+
+import { productSchema } from "./validations/joi/productSchema";
+import { userSchema, authenticateUserSchema } from "./validations/joi/userSchema";
 
 export default class App {
   private app: Application;
@@ -16,6 +21,7 @@ export default class App {
   private categoryController: CategoryController;
   private productController: ProductController
   private jwtMiddleware: JwtValidationMiddleware;
+  private joiMiddleware: JoiValidationMiddleware;
 
   constructor() {
     this.app = express();
@@ -23,6 +29,7 @@ export default class App {
     this.port = Number(process.env.PORT) || 3000;
     this.db = new Database();
     this.jwtMiddleware = new JwtValidationMiddleware();
+    this.joiMiddleware = new JoiValidationMiddleware();
 
     this.userController = new UserController();
     this.categoryController = new CategoryController();
@@ -45,7 +52,7 @@ export default class App {
 
   private setupRoutes() {
     // USER ROUTES
-    this.app.post("/auth/signup", this.userController.createUser.bind(this.userController));
+    this.app.post("/auth/signup", this.joiMiddleware.validate(userSchema), this.userController.createUser.bind(this.userController));
     this.app.post("/auth/login", this.userController.authenticateUser.bind(this.userController));
 
     // CATEGORY ROUTES
