@@ -65,6 +65,8 @@ Response:
 
 **Status Code 200 or 404**
 
+***
+
 #### POST /auth/login
 Authenticates a user.
 
@@ -83,6 +85,8 @@ Response:
 }
 ```
 
+***
+
 ### Categories
 #### GET /category
 Returns all categories.
@@ -100,6 +104,7 @@ Response:
 	},
 ]
 ```
+***
 
 ### Products
 
@@ -128,6 +133,8 @@ Response:
 ]
 ```
 
+***
+
 #### GET /product/:id
 Returns a product based on its ID.
 
@@ -150,6 +157,8 @@ Response:
   }
 ```
 
+***
+
 #### POST /product
 Creates a new product
 
@@ -169,6 +178,8 @@ Request:
 "price": "price"
 }
 ```
+
+***
 
 #### PATCH /product/:id
 Updates the information of an existing product based on its ID.
@@ -190,10 +201,14 @@ Request:
 }
 ```
 
+***
+
 #### DELETE /product/:id
 Removes a product from the system based on its ID.
 
 #### - JWT token required
+
+***
 
 ## **About the author**
 
