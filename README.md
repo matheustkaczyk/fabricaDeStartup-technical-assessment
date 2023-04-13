@@ -17,7 +17,7 @@ npm install
 Create a .env file at the root of the project with the following environment variables:
 ```
 PORT=3000
-MONGO_URI=<sua-url-do-banco-de-dados-mongodb>
+MONGODB_URI=<sua-url-do-banco-de-dados-mongodb>
 JWT_SECRET=<sua-chave-secreta-para-o-jsonwebtoken>
 CORS_ORIGIN=<url-informando-origem-cors>
 ```
